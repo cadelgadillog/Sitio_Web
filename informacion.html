@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Información del Equipo</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Bienvenido <span id="nombreUsuario"></span></h2>
+        <p>Ingrese la información del equipo:</p>
+        <form>
+            <label for="serial">Serial:</label>
+            <input type="text" id="serial" name="serial" required>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required>
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+
+            <button type="button" onclick="registrarEquipo()" class="btn-blue">Registrar</button>
+            <button type="button" onclick="imprimirRegistros()" class="btn-blue">Imprimir Registros</button>
+            <button onclick="location.href='salida.html'" class="btn-red">Salir</button>
+        </form>
+
+        <div id="registros"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

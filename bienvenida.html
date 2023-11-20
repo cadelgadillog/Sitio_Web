@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <style>
+        body {
+            background-color: #27ae60;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #27ae60;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button.secondary {
+            background-color: #e74c3c;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        .registro-container {
+            margin-top: 20px;
+        }
+        .registro {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido <span id="nombreUsuario"></span></h1>
+        <p>Completa la información del equipo:</p>
+        <form>
+            <input type="text" placeholder="Serial" id="serial" required>
+            <input type="text" placeholder="Modelo" id="modelo" required>
+            <input type="text" placeholder="Marca" id="marca" required>
+            <input type="text" placeholder="Descripción" id="descripcion" required>
+            <button type="button" onclick="registrarEquipo()">Registrar</button>
+        </form>
+
+        <div class="registro-container">
+            <h3>Registros:</h3>
+            <div id="registros" class="registro"></div>
+        </div>
+
+        <button class="secondary" onclick="imprimirRegistros()">Imprimir Registros</button>
+        <button onclick="window.location.href='salida.html'">Salir</button>
+    </div>
+
+    <script>
+        document.getElementById('nombreUsuario').innerText = localStorage.getItem('nombre');
+
+        function registrarEquipo() {
+            var serial = document.getElementById('serial').value;
+            var modelo = document.getElementById('modelo').value;
+            var marca = document.getElementById('marca').value;
+            var descripcion = document.getElementById('descripcion').value;
+
+            var registro = `<div class="registro">
+                                <strong>Serial:</strong> ${serial}<br>
+                                <strong>Modelo:</strong> ${modelo}<br>
+                                <strong>Marca:</strong> ${marca}<br>
+                                <strong>Descripción:</strong> ${descripcion}
+                            </div>`;
+
+            document.getElementById('registros').innerHTML += registro;
+            document.getElementById('serial').value = '';
+            document.getElementById('modelo').value = '';
+            document.getElementById('marca').value = '';
+            document.getElementById('descripcion').value = '';
+        }
+
+        function imprimirRegistros() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
